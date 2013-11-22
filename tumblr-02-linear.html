@@ -1,0 +1,528 @@
+<html>
+<head>
+<!--
+
+  _      _  _         _                 _     
+ | |__  | |(_) _ __  | |_  _   _   ___ | |__  
+ | '_ \ | || || '_ \ | __|| | | | / __|| '_ \ 
+ | |_) || || || |_) || |_ | |_| || (__ | | | |
+ |_.__/ |_||_|| .__/  \__| \__, | \___||_| |_|
+              |_|          |___/              
+
+    LINEAR theme
+    
+    bliptychthemes.tumblr.com
+    
+    Do not remove this notice.
+    Do not redistribute under another name.
+    Do not use as a base.
+    Do not combine with other themes.
+    
+-->
+
+    <!-- META DATA -->
+    <title>{Title}</title>
+    {block:Description}<meta name="description" content="{MetaDescription}" />{/block:Description}
+    <link rel="shortcut icon" href="{Favicon}" />
+    <link rel="alternate" type="application/rss+xml" href="{RSS}" />
+
+    <!-- CUSTOMIZATION OPTIONS -->
+    <meta name="if:Responsive" content="1" />
+    
+    <meta name="color:Background" content="#ffffff" />
+    <meta name="image:BackgroundImage" content="" />
+    <meta name="if:BackgroundImageTiled" content="0" />
+    
+    <meta name="color:HeaderBackground" content="#cccccc" />
+    <meta name="image:HeaderBackground" content="" />
+    <meta name="if:HeaderImageTiled" content="0" />
+    <meta name="color:HeaderBorder" content="#000000" />
+    <meta name="color:HeaderBorder2" content="#999999" />
+    <meta name="if:ShowSecondBorder" content="1" />
+    
+    <meta name="text:HeaderText" content="header text" />
+    <meta name="color:HeaderText" content="#000000" />
+    <meta name="font:HeaderText" content="Geneva" />
+
+    <meta name="font:Title" content="Geneva" />
+    <meta name="text:TitleSize" content="18px" />
+    <meta name="color:Title" content="#999999" />
+
+    <meta name="font:Description" content="Geneva" />
+    <meta name="text:DescriptionSize" content="10px" />
+    
+    <meta name="text:AltTextHome" content="Main" />
+    <meta name="text:AltTextArchive" content="Archive" />
+    <meta name="text:AltTextAskAction" content="asked" />
+    
+    <meta name="color:Link" content="#999999" />
+    <meta name="color:LinkHover" content="#000000" />
+    
+    <meta name="font:PostTitle" content="Geneva" />
+    <meta name="text:PostTitleSize" content="14px" />
+    
+    <meta name="font:PostBody" content="Geneva" />
+    <meta name="text:PostBodySize" content="10px" />
+    <meta name="color:PostBody" content="#000000" />
+    
+    <meta name="font:Quote" content="Geneva" />
+    <meta name="text:QuoteSize" content="14px" />
+    
+    <meta name="if:AudioPlayerWhite" content="0" />
+    <meta name="if:AudioPlayerGray" content="1" />
+    <meta name="if:AudioPlayerBlack" content="0" />
+    
+    <meta name="color:EmphasisBackground" content="#dddddd" />
+    <meta name="color:PermalinkText" content="#999999" />
+
+    <meta name="if:ShowCaptions" content="1" />
+    <meta name="if:ShowTags" content="1" />
+    <meta name="if:ShowNoteCount" content="1" />
+
+    <!-- CSS -->
+    <style type="text/css">
+    
+        /* ESSENTIALS */
+        body {
+            overflow-x: hidden;
+            background: {color:Background} url({image:BackgroundImage});
+            {block:IfNotBackgroundImageTiled}
+            background-size: cover;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            {/block:IfNotBackgroundImageTiled}
+            }
+        a {
+            color: {color:Link};
+            text-decoration: none;
+            -moz-transition-duration: 0.8s;
+            -o-transition-duration: 0.8s;
+            -webkit-transition-duration: 0.8s;
+            transition-duration: 0.8s;
+            }
+        a:hover {
+            color: {color:LinkHover};
+            }
+        .clearFloat {
+            clear: both;
+            }
+            
+        /* HEADER */
+        .header {
+            display: block;
+            position: fixed;
+            width: 100%;
+            height: 43px;
+            top: 0px;
+            left: 0px;
+            z-index: 10;
+            {block:IfShowSecondBorder}
+            border-bottom: 2px solid {color:HeaderBorder2};
+            {/block:IfShowSecondBorder}
+            }
+        .headerMain {
+            height: 40px;
+            padding-right: 250px;
+            left: 0px;
+            top: 0px;
+            background: {color:HeaderBackground} url({image:HeaderBackground});
+            border-bottom: 3px solid {color:HeaderBorder};
+            }
+        .icon {
+            float: left;
+            padding: 0px;
+            margin: 5px;
+            }
+        .headerText {
+            margin: 0px;
+            padding: 21px 0px 0px 0px;
+            font-style: italic;
+            font-family: {font:HeaderText};
+            font-size: 11px;
+            color: {color:HeaderText};
+            position: absolute;
+            left: 40px;
+            }
+            
+        /* CONTAINER */
+        .container  {
+            width: 800px;
+            margin: auto;
+            margin-top: 50px;
+            }
+            
+        /* SIDEBAR */
+        .sidebar {
+            position: fixed;
+            float: left;
+            width: 250px;
+            margin: 25px;
+            text-align: center;
+            }
+        .title {
+            margin: 0px;
+            padding: 5px;
+            font-family: {font:Title};
+            font-size: {text:TitleSize};
+            color: {color:Title};
+            }
+        .description, .nav, .pagination {
+            padding: 5px;
+            font-family: {font:Description};
+            font-size: {text:DescriptionSize};
+            }
+        .description {
+            color: {color:Description};
+            }
+        .pagination-bottom {
+            text-align: center;
+            font-size: {text:TitleSize};
+            display: none;
+            }
+        .pagination-prev, .pagination-next {
+            width: 50%;
+            height: 50px;
+            display: block;
+            }
+        .pagination-prev {
+            float: left;
+            }
+        .pagination-next {
+            float: right;
+            }
+            
+        /* POSTS */ 
+        .posts {
+            float: right;
+            width: 500px;
+            margin: 0px;
+            padding: 0px;
+            }
+        .entry {
+            display: block;
+            color: {color:PostBody};
+            margin: 10px 0px;
+            width: 500px;
+            font-family: {font:PostBody};
+            font-size: {text:PostBodySize};
+            }
+        .entry p {
+            margin: 3px 0px;
+            }
+        .entry br {
+            display: block;
+            line-height: 15px;
+            }
+        .entry blockquote {
+            padding-left: 10px;
+            margin: 5px;
+            border-left: 2px solid {color:EmphasisBackground};
+            }
+        .entry ul, ol {
+            padding-left: 35px;
+            margin: 0px;
+            }
+            
+        /* TEXT entry */
+        .entry h1 {
+            padding: 2px 0px;
+            margin: 0px;
+            font-weight: normal;
+            font-family: {font:PostTitle};
+            font-size: {text:PostTitleSize};
+            }   
+            
+        /* PHOTO entry */
+        .photo {
+            max-width: 500px;
+        }
+            
+        /* PANORAMA entry */
+        .panorama {
+            width: 500px;
+            }
+            
+        /* QUOTE entry */
+        .entryQuote .quote {
+            font-style: italic;
+            font-family: {font:Quote};
+            font-size: {text:QuoteSize};
+            margin: 0px;
+            }
+            
+        /* CHAT entry */
+        .entryChat ul {
+            list-style-type: none;
+            margin: 0px;
+            padding: 0px;
+            }
+        .entryChat ul li {
+            margin: 2px 0px;
+            padding: 3px;
+            background-color: {color:EmphasisBackground};
+            }
+        .entryChat .label {
+            }
+            
+        /* LINK entry */
+        .entryLink .linkOut {
+            font-family: {font:PostTitle};
+            font-size: {text:PostTitleSize};
+            }
+            
+        /* AUDIO entry */
+        .entryAudio .albumArt {
+            width: 500px;
+            margin-bottom: 2px;
+            }
+        ul.audioData {
+            list-style-type: none;
+            margin: 0px;
+            padding: 0px;
+            }
+        .audioData li {
+            margin: 2px 0px;
+            padding: 3px;
+            background-color: {color:EmphasisBackground};
+            }
+        .audioData li .info {
+            text-transform: uppercase;
+            }
+        iframe {
+            width: 100%;
+            margin: 0px;
+            }
+            
+        /* ANSWER entry */
+        .asker {
+            text-transform: uppercase;
+            }
+        .asked {
+            padding: 5px;
+            background-color: {color:EmphasisBackground};
+            }
+        .answer {
+            margin-top: 10px;
+            }
+            
+        /* CAPTION */
+        .caption {
+            padding-top: 8px;
+            }
+                                    
+        /* PERMALINK */
+        .permalink {
+            width: 100%;
+            margin: 4px 0px;
+            padding: 2px;
+            text-align: center;
+            font-family: {font:PostBody};
+            font-size: 9px;
+            border-top: 1px solid {color:EmphasisBackground};
+            {block:IndexPage}
+            opacity: 0;
+            filter: alpha(opacity=0);
+            -moz-transition-duration: 0.6s;
+            -o-transition-duration: 0.6s;
+            -webkit-transition-duration: 0.6s;      
+            transition-duration: 0.6s;
+            {/block:IndexPage}
+            }
+        .permalink a {
+            color: {color:PermalinkText};
+            }
+        {block:IndexPage}
+        .entry:hover .permalink {
+            opacity: 1;
+            filter: alpha(opacity=100);
+            }
+        {/block:IndexPage}
+            
+        .tag {
+            padding: 0px 3px;
+            }
+
+        /* NOTES */
+        .notes {
+            margin-top: 10px;
+            list-style-type: none;
+            }
+            
+    {block:IfResponsive}             
+        @media (max-width: 500px) and (min-width: 0px) {
+            body { margin: 0px; }
+            .container { width: 100%; }
+            .sidebar { position: relative; float: none;
+                width: 100%; padding: 0px; margin: 0px; }
+            .posts { float: none; width: 100%; }
+            .entry { width: 100%; }
+            .entry .photoset_row img,
+            .entry .photo,
+            .entry .albumArt { width: 100%!important; height: auto;}
+            .pagination-bottom { display: initial; }
+            .pagination-top { display: none; }
+        }
+    {/block:IfResponsive}
+        
+        {CustomCSS}
+        
+    </style>
+    
+</head> <!-- END head -->
+
+<body> <!-- BEGIN body -->
+    
+    <div class="header">
+    
+      <div class="headerMain">
+         <div class="icon"><img src="{PortraitURL-30}" /></div>
+         <div class="headerText">{text:HeaderText}</div>
+      </div>
+      <div class="clearFloat"></div>
+
+      <div class="pagination">
+      {block:Pagination}
+       {block:PreviousPage}<a href="{PreviousPage}">{text:PaginationPreviousSymbol}</a>{/block:PreviousPage}
+       {block:NextPage}<a href="{NextPage}">{text:PaginationNextSymbol}</a>{/block:NextPage}
+      {/block:Pagination}
+      </div>
+
+    </div> <!-- END header -->
+      
+    <div class="container"> <!-- BEGIN container -->
+
+    <div class="sidebar">
+      <p class="title">{Title}</p>
+      <div class="description">{Description}</div>
+
+      <div class="nav"><a href="/">{text:AltTextHome}</a><br>
+      <a href="/archive">{text:AltTextArchive}</a><br>
+      {block:AskEnabled}<a href="/ask">{AskLabel}</a><br>{/block:AskEnabled}
+      {block:SubmissionsEnabled}<a href="/submit">{SubmitLabel}</a><br>{/block:SubmissionsEnabled}
+      {block:HasPages}{block:Pages}<a href="{URL}">{Label}</a><br>{/block:Pages}{/block:HasPages}
+      <a id="bt" href="http://bliptychthemes.tumblr.com/">Theme</a>
+      </div> <!-- END nav -->
+      
+    <div class="pagination pagination-top">
+      {block:Pagination}
+       {block:PreviousPage}<a href="{PreviousPage}">&larr;</a>{/block:PreviousPage}
+       {block:NextPage}<a href="{NextPage}">&rarr;</a>{/block:NextPage}
+      {/block:Pagination}
+    </div>
+
+    </div>
+    
+    <div class="posts">
+    {block:Posts}<div class="entry {block:Text}entryText{/block:Text}{block:Photo}entryPhoto{/block:Photo}{block:Quote}entryQuote{/block:Quote}{block:Link}entryLink{/block:Link}{block:Chat}entryChat{/block:Chat}{block:Audio}entryAudio{/block:Audio}{block:Video}entryVideo{/block:Video}{block:Answer}entryAnswer{/block:Answer}">
+    <!-- TEXT entry -->
+    {block:Text}
+      {block:Title}<h1>{Title}</h1>{/block:Title}
+      {Body}
+    {/block:Text}
+    <!-- PHOTO entry -->
+    {block:Photo}
+        {LinkOpenTag}<img class="photo" src="{PhotoURL-500}" />{LinkCloseTag}
+        {block:IfShowCaptions}
+        {block:Caption}<p class="caption">{Caption}</p>{/block:Caption}
+      {/block:IfShowCaptions}
+    {/block:Photo}
+    <!-- PHOTOSET entry -->
+    {block:Photoset}
+      {Photoset}
+      {block:IfShowCaptions}
+        {block:Caption}<p class="caption">{Caption}</p>{/block:Caption}
+      {/block:IfShowCaptions}
+    {/block:Photoset}
+    <!-- PANORAMA entry -->
+    {block:Panorama}
+      {LinkOpenTag}<img class="panorama"src="{PhotoURL-Panorama}" alt="{PhotoAlt}" />{LinkCloseTag}
+      {block:IfShowCaptions}
+        {block:Caption}<p class="caption">{Caption}</p>{/block:Caption}
+      {/block:IfShowCaptions}
+    {/block:Panorama}
+    <!-- QUOTE entry -->
+    {block:Quote}
+      <p class="quote">{Quote}</p>
+      {block:Source}<br><div class="source">&mdash;&nbsp;{Source}</div>{/block:Source}
+    {/block:Quote}
+    <!-- CHAT entry -->
+    {block:Chat}
+      {block:Title}{Title}{/block:Title}
+      <ul>{block:Lines}<li>{block:Label}<span class="label">{Label}</span>{/block:Label}&nbsp;{Line}{/block:Lines}</li></ul>
+    {/block:Chat}
+    <!-- LINK entry -->
+    {block:Link}
+      <a class="linkOut" href="{URL}"><h1>&raquo;&nbsp;{Name}</h1></a>
+      {block:Description}{Description}{/block:Description}
+    {/block:Link}
+    <!-- AUDIO entry -->
+    {block:Audio}
+      {block:AlbumArt}<img class="albumArt" src="{AlbumArtURL}" />{/block:AlbumArt}
+      {block:AudioEmbed}{AudioEmbed-500}{/block:AudioEmbed}
+      {block:AudioPlayer}
+        {block:IfAudioPlayerBlack}{block:IfNotAudioPlayerWhite}{block:IfNotAudioPlayerGray}{AudioPlayerBlack}{/block:IfNotAudioPlayerGray}{/block:IfNotAudioPlayerWhite}{/block:IfAudioPlayerBlack}
+        {block:IfAudioPlayerWhite}{block:IfNotAudioPlayerBlack}{block:IfNotAudioPlayerGray}{AudioPlayerWhite}{/block:IfNotAudioPlayerGray}{/block:IfNotAudioPlayerBlack}{/block:IfAudioPlayerWhite}
+        {block:IfAudioPlayerGray}{block:IfNotAudioPlayerBlack}{block:IfNotAudioPlayerWhite}{AudioPlayerGrey}{/block:IfNotAudioPlayerWhite}{/block:IfNotAudioPlayerBlack}{/block:IfAudioPlayerGray}
+      {/block:AudioPlayer} 
+      <ul class="audioData">
+        {block:TrackName}<li>Track Name: {TrackName}</li>{/block:TrackName}
+        {block:Artist}<li>Artist: {Artist}</li>{/block:Artist}
+        {block:Album}<li>Album: {Album}</li>{/block:Album}
+      </ul>
+      {block:IfShowCaptions}
+        {block:Caption}<p class="caption">{Caption}</p>{/block:Caption}
+      {/block:IfShowCaptions}
+    {/block:Audio}
+    <!-- VIDEO entry -->
+    {block:Video}
+      {VideoEmbed-500}
+      {block:IfShowCaptions}
+        {block:Caption}<p class="caption">{Caption}</p>{/block:Caption}
+      {/block:IfShowCaptions}
+    {/block:Video}
+    <!-- ANSWER entry -->
+    {block:Answer}
+      <div class="asked"><span class="asker">{Asker} {text:AltTextAskAction}:</span> {Question}</div>
+      <div class="answer">{Answer}</div>
+    {/block:Answer}
+          
+    <!-- NOTES -->
+    <div class="permalink">
+    {block:Date}
+    {block:PermalinkPage}
+      {block:ContentSource}
+        Source: <a href="{SourceURL}">{SourceTitle}</a><br>
+      {/block:ContentSource}
+      {block:RebloggedFrom}
+        Originally by <a href="{ReblogRootURL}">{ReblogRootTitle}</a>, reblogged from <a href="{ReblogParentURL}">{ReblogParentTitle}</a><br>
+      {/block:RebloggedFrom}  
+    {/block:PermalinkPage}
+      <a href="{Permalink}" title="Permalink">{Month} {DayofMonth} {Year} {24HourWithZero}:{Minutes}</a>
+    {block:IfShowNoteCount} &ndash; {NoteCountWithLabel}{/block:IfShowNoteCount}
+    {/block:Date}
+    {block:IndexPage}{block:IfShowTags}
+      {block:HasTags}<br>{block:Tags}<a class="tag" href="{TagURL}">{Tag}</a>{/block:Tags}{/block:HasTags}
+    {/block:IfShowTags}{/block:IndexPage}
+    {block:PermalinkPage}
+      {block:HasTags}<br>{block:Tags}<a class="tag" href="{TagURL}">{Tag}</a>{/block:Tags}{/block:HasTags}
+    {/block:PermalinkPage}
+    </div>
+          
+      {block:PostNotes}<a name="postnotes"></a>{PostNotes}{/block:PostNotes}{/block:PermalinkPage}
+    
+      </div>{/block:Posts}
+    </div> <!-- END posts -->
+    <div class="clearFloat"></div>
+
+    <div class="pagination-bottom">
+      {block:Pagination}
+       {block:PreviousPage}<a class="pagination-prev" href="{PreviousPage}">&larr;</a>{/block:PreviousPage}
+       {block:NextPage}<a class="pagination-next" href="{NextPage}">&rarr;</a>{/block:NextPage}
+      {/block:Pagination}
+    </div>
+
+    </div> <!-- END container -->
+    
+</body> <!-- END body -->
+</html> <!-- END html -->
