@@ -27,7 +27,7 @@
     <link rel="alternate" type="application/rss+xml" href="{RSS}" />
 
     <!-- CUSTOMIZATION OPTIONS -->
-    <meta name="if:Responsive" content="1" />
+    <meta name="if:Responsive" content="0" />
     
     <meta name="color:Background" content="#ffffff" />
     <meta name="image:BackgroundImage" content="" />
@@ -36,7 +36,7 @@
     <meta name="color:HeaderBackground" content="#cccccc" />
     <meta name="image:HeaderBackground" content="" />
     <meta name="if:HeaderImageTiled" content="0" />
-    <meta name="color:HeaderBorder" content="#000000" />
+    <meta name="color:HeaderBorder" content="#444444" />
     <meta name="color:HeaderBorder2" content="#999999" />
     <meta name="if:ShowSecondBorder" content="1" />
     
@@ -182,7 +182,7 @@
             }
         .pagination-prev, .pagination-next {
             width: 50%;
-            height: 50px;
+            height: 35px;
             display: block;
             }
         .pagination-prev {
@@ -231,7 +231,10 @@
             font-weight: normal;
             font-family: {font:PostTitle};
             font-size: {text:PostTitleSize};
-            }   
+            }
+        .entryText {
+            padding: 0px 5px;
+            }
             
         /* PHOTO entry */
         .photo {
@@ -244,6 +247,9 @@
             }
             
         /* QUOTE entry */
+        .entryQuote {
+            padding: 0px 5px;
+            }
         .entryQuote .quote {
             font-style: italic;
             font-family: {font:Quote};
@@ -266,6 +272,9 @@
             }
             
         /* LINK entry */
+        .entryLink {
+            padding: 0px 5px;
+            }
         .entryLink .linkOut {
             font-family: {font:PostTitle};
             font-size: {text:PostTitleSize};
@@ -295,6 +304,9 @@
             }
             
         /* ANSWER entry */
+        .entryAnswer {
+            padding: 0px 5px;
+            }
         .asker {
             text-transform: uppercase;
             }
@@ -362,6 +374,8 @@
             .entry .albumArt { width: 100%!important; height: auto;}
             .pagination-bottom { display: initial; }
             .pagination-top { display: none; }
+            .entry .wrap { overflow-x: scroll; }
+            .entry .panorama { width: auto; }
         }
     {/block:IfResponsive}
         
@@ -376,7 +390,7 @@
     <div class="header">
     
       <div class="headerMain">
-         <div class="icon"><img src="{PortraitURL-30}" /></div>
+         <div class="icon"><a href=""><img src="{PortraitURL-30}" /></a></div>
          <div class="headerText">{text:HeaderText}</div>
       </div>
       <div class="clearFloat"></div>
@@ -436,7 +450,7 @@
     {/block:Photoset}
     <!-- PANORAMA entry -->
     {block:Panorama}
-      {LinkOpenTag}<img class="panorama"src="{PhotoURL-Panorama}" alt="{PhotoAlt}" />{LinkCloseTag}
+      <div class="wrap">{LinkOpenTag}<img class="panorama"src="{PhotoURL-Panorama}" alt="{PhotoAlt}" />{LinkCloseTag}</div>
       {block:IfShowCaptions}
         {block:Caption}<p class="caption">{Caption}</p>{/block:Caption}
       {/block:IfShowCaptions}
